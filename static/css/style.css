@@ -1,0 +1,39 @@
+/* Comment 1: Base style for every paragraph on the page */
+p {
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Comment 2: Style for every level two header */
+h2 {
+    color: #990000;
+    border-bottom: 2px solid #990000;
+    padding-bottom: 4px;
+}
+
+/* Comment 3: Table borders, shared into one clean line */
+table, th, td {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #990000;
+    border-collapse: collapse;
+    padding: 8px;
+}
+
+/* Special third paragraph, targeted by its id */
+p#career-note {
+    font-style: italic;
+    background-color: #f2f2f2;
+}
+
+/* Reusable class: apply it to any element */
+.highlight {
+    font-weight: bold;
+}
+
+/* Logo sizing, only for img tags with class="logo" */
+img.logo {
+    width: 267px;
+    height: 72px;
+}
