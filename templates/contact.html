@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block page_title %}Contact{% endblock %}
+
+{% block page_head %}Contact Me{% endblock %}
+
+{% block page_content %}
+    {% if form_submitted %}
+        <div class="alert alert-success" role="alert">
+            <h2 class="h4 mb-0">Thank you for completing my form, {{ request.form.get('first_name') }}!</h2>
+        </div>
+        <p>Here is what you entered:</p>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th scope="row">First Name</th>
+                    <td>{{ request.form.get('first_name') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Last Name</th>
+                    <td>{{ request.form.get('last_name') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email Address</th>
+                    <td>{{ request.form.get('email') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Reason for Contact</th>
+                    <td>{{ request.form.get('reason') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Message</th>
+                    <td>{{ request.form.get('message') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-outline-primary" href="{{ url_for('contact') }}">Send another message</a>
+    {% else %}
+        <form action="{{ url_for('contact') }}" method="post">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                    <div id="emailHelp" class="form-text">I'll never share your email with anyone else.</div>
+                </div>
+                <div class="col-12">
+                    <label for="reason" class="form-label">Reason for Contact</label>
+                    <select class="form-select" id="reason" name="reason" required>
+                        <option value="">Choose a reason...</option>
+                        <option value="General Question">General Question</option>
+                        <option value="Project Collaboration">Project Collaboration</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %}Favorite Course{% endblock %}
+
+{% block page_head %}My Favorite Course{% endblock %}
+
+{% block page_content %}
+    {% if subject and course_number %}
+        <div class="alert alert-success" role="alert">
+            <p class="mb-0 fs-5">You entered your favorite course as: <strong>{{ subject }} {{ course_number }}</strong></p>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            <p class="mb-0">No course was entered yet. Add it to the URL, for example:
+                <a href="{{ url_for('favorite_course', subject='BMGT', course_number='407') }}">/favorite-course?subject=BMGT&amp;course_number=407</a>
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}
